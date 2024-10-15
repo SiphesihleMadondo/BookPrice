@@ -1,0 +1,18 @@
+  .mat-header-cell {
+    position: sticky;
+    top: 0;
+    background: white; /* Ensure header background is set */
+    z-index: 1; /* Ensure header is above table content */
+  }
+
+  .mat-elevation-z8{
+    height: 400px;
+    overflow: auto;
+  }
+
+  /*making the columns to have same fixed height*/
+  .mat-column-Partner,  .mat-column-Client-Name, .mat-column-Statement-Date, .mat-column-Policy-Number, .mat-column-Product-Provider, 
+  .mat-column-Adjusted-Revenue, .mat-column-Adjusted-Asset-Value, .mat-column-Book-Price{
+    width: 170px; /* Set fixed width */
+   
+  }

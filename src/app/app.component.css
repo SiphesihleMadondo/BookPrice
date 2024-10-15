@@ -1,0 +1,21 @@
+
+.book_container {
+    position: relative;
+    top: 18px;
+    left: 36px;
+    width: 410px;
+    height: 431px;
+
+    font-family: Poppins, Bold;
+    font-size: 22px;
+    opacity: 1;
+    box-shadow:  10px 10px 5px #aaaaaa;
+  }
+
+  .btn{
+    position: relative;
+    top: 350px;
+    left: 25px;
+
+  }
+  
