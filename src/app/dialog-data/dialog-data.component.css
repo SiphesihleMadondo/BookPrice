@@ -1,12 +1,13 @@
-  .mat-header-cell {
+ /*  .mat-header-cell {
     position: sticky;
     top: 0;
-    background: white; /* Ensure header background is set */
-    z-index: 1; /* Ensure header is above table content */
-  }
+    background: white; Ensure header background is set 
+    z-index: 1;  Ensure header is above table content 
+  } */
 
   .mat-elevation-z8{
     height: 400px;
+    box-shadow: none;
     overflow: auto;
   }
 
@@ -15,4 +16,10 @@
   .mat-column-Adjusted-Revenue, .mat-column-Adjusted-Asset-Value, .mat-column-Book-Price{
     width: 170px; /* Set fixed width */
    
+  }
+
+  th.mat-sort-header-sorted-Client-Name  {
+    color: black;
+    text-decoration: none; /* Removes underline */
+    
   }

@@ -39,7 +39,7 @@ export class AppComponent implements OnInit{
     
       //height: '500px',
       maxWidth: '1500px',
-      maxHeight: '500px'
+      maxHeight: '600px'
       
     })
 
