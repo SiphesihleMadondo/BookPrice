@@ -2,15 +2,11 @@ import { Component, inject, OnInit } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import {
   MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogTitle,
-  MatDialogContent,
   MatDialogConfig
 } from '@angular/material/dialog'
-import { MatButtonModule } from '@angular/material/button'
 import { DialogDataComponent } from './dialog-data/dialog-data.component'
-import { SBookPriceService } from './service/s-book-price.service'
 import { ScrollStrategyOptions } from '@angular/cdk/overlay'
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -19,30 +15,28 @@ import { ScrollStrategyOptions } from '@angular/cdk/overlay'
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
+  scrollStrategy: any
+  constructor (
+    public dialog: MatDialog,
+    private scrollStrategyOptions: ScrollStrategyOptions,
 
-  scrollStrategy: any;
-  constructor (public dialog: MatDialog,  private scrollStrategyOptions: ScrollStrategyOptions) {}
+  ) {}
 
-
-  ngOnInit(): void {
+  ngOnInit (): void {
     this.scrollStrategy = this.scrollStrategyOptions.noop
   }
 
   openDailog () {
-
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.scrollStrategy = this.scrollStrategy;
+    const dialogConfig = new MatDialogConfig()
+    dialogConfig.scrollStrategy = this.scrollStrategy
     dialogConfig.height = '400px'
 
     this.dialog.open(DialogDataComponent, {
-    
-      //height: '500px',
-      maxWidth: '1500px',
-      maxHeight: '600px'
-      
+      height: '700px',
+      width: '100%',
+      maxWidth: '1500px'
     })
-
-    
   }
+
 }

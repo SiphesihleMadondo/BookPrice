@@ -1,74 +1,82 @@
-<h2 mat-dialog-title>Partner's Clients</h2>
+<h7 mat-dialog-title style="font-family: Poppins;">Clients</h7>
+
+<mat-dialog-actions style="margin-top: -5px; position: absolute; right: 0%;">
+    <button mat-flat-button mat-dialog-close style="border: none;"><span class="close">x</span></button>
+</mat-dialog-actions>
 
 <mat-dialog-content style="width: max-content; overflow: hidden;">
 
-    <mat-form-field appearance="outline" >
-        <mat-label>Search</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Search clients">
-    </mat-form-field>
+    <div class="input-group mb-3" style="width: 150px;">
+        <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true" style="color: grey;"></i></span>
+        <input (keyup)="applyFilter($event)" type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
+      </div>
 
-    <div class="mat-elevation-z8" >
-       
-        <table mat-table matSort [dataSource]="dataSource">
+
+    <br>
+    <div class="mat-elevation-z8">
+
+        <table mat-table matSort [dataSource]="dataSource" class="clients-table">
 
             <!--Partner column-->
             <ng-container matColumnDef="Partner">
                 <th mat-header-cell *matHeaderCellDef="">Partner</th>
                 <td mat-cell *matCellDef="let element">{{element.partner}}</td>
             </ng-container>
-            
-             <!--Client Name-->
-             <ng-container matColumnDef="Client Name">
+
+            <!--Client Name-->
+            <ng-container matColumnDef="Client Name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Client Name</th>
                 <td mat-cell *matCellDef="let element">{{element.clientName}}</td>
             </ng-container>
 
-             <!--Statement Date-->
-             <ng-container matColumnDef="Statement Date">
+            <!--Statement Date-->
+            <ng-container matColumnDef="Statement Date">
                 <th mat-header-cell *matHeaderCellDef="" mat-sort-header>Statement Date</th>
                 <td mat-cell *matCellDef="let element">{{element.statementdate}}</td>
             </ng-container>
 
             <!--Policy Number-->
-            <ng-container matColumnDef="Policy Number" >
-                <th mat-header-cell *matHeaderCellDef="" >Policy Number</th>
+            <ng-container matColumnDef="Policy Number">
+                <th mat-header-cell *matHeaderCellDef="">Policy Number</th>
                 <td mat-cell *matCellDef="let element">{{element.policynumber}}</td>
             </ng-container>
 
             <!--Product Provider-->
             <ng-container matColumnDef="Product Provider">
-                <th mat-header-cell *matHeaderCellDef="" >Product Provider</th>
+                <th mat-header-cell *matHeaderCellDef="">Product Provider</th>
                 <td mat-cell *matCellDef="let element">{{element.productProvider}}</td>
             </ng-container>
 
             <!--Adjusted Revenue-->
             <ng-container matColumnDef="Adjusted Revenue">
-                <th mat-header-cell *matHeaderCellDef="" >Adjusted Revenue</th>
-                <td mat-cell *matCellDef="let element">{{element.adjustedRevenue | currency:'ZAR': 'symbol-narrow' : '1.2-2' }}</td>
+                <th mat-header-cell *matHeaderCellDef="">Adjusted Revenue</th>
+                <td mat-cell *matCellDef="let element">{{element.adjustedRevenue | currency:'ZAR': 'symbol-narrow' :
+                    '1.2-2' }}</td>
             </ng-container>
 
             <!--Adjusted Asset Value-->
             <ng-container matColumnDef="Adjusted Asset Value">
-                <th mat-header-cell *matHeaderCellDef="" >Adjusted Asset Value</th>
-                <td mat-cell *matCellDef="let element">{{element.adjustedAssetValue | currency:'ZAR': 'symbol-narrow' : '1.2-2'}}</td>
+                <th mat-header-cell *matHeaderCellDef="">Adjusted Asset Value</th>
+                <td mat-cell *matCellDef="let element">{{element.adjustedAssetValue | currency:'ZAR': 'symbol-narrow' :
+                    '1.2-2'}}</td>
             </ng-container>
 
-             <!--Book Price-->
-             <ng-container matColumnDef="Book Price">
-                <th mat-header-cell *matHeaderCellDef=""  >Book Price</th>
-                <td mat-cell *matCellDef="let element">{{element.bookPrice1 | currency:'ZAR': 'symbol-narrow' : '1.2-2'}}</td>
+            <!--Book Price-->
+            <ng-container matColumnDef="Book Price">
+                <th mat-header-cell *matHeaderCellDef="">Book Price</th>
+                <td mat-cell *matCellDef="let element">{{element.bookPrice1 | currency:'ZAR': 'symbol-narrow' :
+                    '1.2-2'}}</td>
             </ng-container>
-            
-            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true" class="mat-mdc-row"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="mat-mdc-row"></tr>
 
         </table>
-        <mat-paginator [pageSizeOptions]="[5,10,20]"
-            showFirstLastButtons
+       <mat-paginator [pageSizeOptions]="[10,20,30]" showFirstLastButtons
             aria-label="Select page of New Business clients">
 
         </mat-paginator>
-
+ 
     </div>
 
 </mat-dialog-content>
