@@ -51,7 +51,7 @@ export class DialogDataComponent implements OnInit {
     'Adjusted Asset Value',
     'Book Price'
   ]
-  dataSource = new MatTableDataSource<any>()
+  dataSource = new MatTableDataSource<any>([])
 
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort
@@ -62,13 +62,9 @@ export class DialogDataComponent implements OnInit {
     this.returnClients()
   }
 
-  ngAfterContentInit (): void {
-    this.dataSource.paginator = this.paginator
-    this.dataSource.sort = this.sort
-  }
-
   returnClients () {
     this.bookPrice.getClients().subscribe(response => {
+
       this.dataSource.data = response
       //
 
@@ -79,7 +75,7 @@ export class DialogDataComponent implements OnInit {
       this.sort.direction = sortState.direction
       this.sort.sortChange.emit(sortState)
 
-      console.log(this.dataSource)
+      console.log(this.dataSource.sort)
     })
   }
 
