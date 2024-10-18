@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core'
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core'
 import {
   MAT_DIALOG_DATA,
   MatDialogContent,
@@ -17,7 +17,6 @@ import { MatSortModule } from '@angular/material/sort'
 import { MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
-
 
 @Component({
   selector: 'app-dialog-data',
@@ -38,45 +37,50 @@ import { MatInputModule } from '@angular/material/input'
   templateUrl: './dialog-data.component.html',
   styleUrl: './dialog-data.component.css'
 })
-export class DialogDataComponent implements OnInit {
+export class DialogDataComponent implements AfterViewInit {
   bookPrices: BookPrice[] = []
-  data = inject(MAT_DIALOG_DATA)
   displayedColumns: string[] = [
-    'Partner',
-    'Client Name',
-    'Statement Date',
-    'Policy Number',
-    'Product Provider',
-    'Adjusted Revenue',
-    'Adjusted Asset Value',
-    'Book Price'
+    'partner',
+    'clientName',
+    'statementd',
+    'policynumber',
+    'productProvider',
+    'adjustedRevenue',
+    'adjustedAssetValue',
+    'bookPrice1'
   ]
-  dataSource = new MatTableDataSource<any>([])
+  dataSource = new MatTableDataSource(this.bookPrices)
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort
+  @ViewChild(MatPaginator) paginator!: MatPaginator
+
 
   constructor (protected bookPrice: SBookPriceService) {}
+  
 
-  ngOnInit (): void {
+ 
+  ngAfterViewInit(): void {
     this.returnClients()
+    this.dataSource.sort = this.sort
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+    
+  
   }
 
   returnClients () {
-    this.bookPrice.getClients().subscribe(response => {
+    this.bookPrice.getClients().subscribe((data: BookPrice[]) => {
 
-      this.dataSource.data = response
-      //
-
-      this.dataSource.paginator = this.paginator
-      this.dataSource.sort = this.sort
-      const sortState: Sort = { active: 'Client Name', direction: 'asc' }
+      this.bookPrices = data 
+      this.dataSource.data = this.bookPrices 
+      
+      const sortState: Sort = { active: 'partner', direction: 'asc' }
       this.sort.active = sortState.active
       this.sort.direction = sortState.direction
       this.sort.sortChange.emit(sortState)
-
-      console.log(this.dataSource.sort)
+      this.dataSource.paginator = this.paginator
+    
     })
+   
   }
 
   applyFilter (event: Event) {
