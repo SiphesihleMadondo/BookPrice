@@ -67,6 +67,8 @@
   height: 300px !important;
   width: auto!important;
   min-width: 10%;
+  margin-left: 5%;
+  font-family: Poppins;
 }
 
 @media (max-width: 600px) {
