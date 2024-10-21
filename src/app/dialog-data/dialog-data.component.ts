@@ -40,6 +40,7 @@ export class DialogDataComponent implements AfterViewInit {
   Image_url = '../assets/Icons/users_icon.png'
   bookPrices: BookPrice[] = []
   displayedColumns: string[] = [
+    '_user',
     'clientName',
     'statementd',
     'policynumber',

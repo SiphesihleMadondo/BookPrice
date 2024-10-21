@@ -70,6 +70,9 @@
   margin-left: 5%;
   font-family: Poppins;
 }
+.mat-column-_user{
+  width: 5% !important;
+}
 
 @media (max-width: 600px) {
   .clients-table {
