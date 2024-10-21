@@ -1,9 +1,7 @@
-import { AfterViewInit, Component, inject, OnInit } from '@angular/core'
+import { AfterViewInit, Component } from '@angular/core'
 import {
-  MAT_DIALOG_DATA,
   MatDialogContent,
   MatDialogModule,
-  MatDialogRef,
   MatDialogTitle
 } from '@angular/material/dialog'
 import { ViewChild } from '@angular/core'
@@ -17,6 +15,7 @@ import { MatSortModule } from '@angular/material/sort'
 import { MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
+
 
 @Component({
   selector: 'app-dialog-data',
@@ -38,9 +37,9 @@ import { MatInputModule } from '@angular/material/input'
   styleUrl: './dialog-data.component.css'
 })
 export class DialogDataComponent implements AfterViewInit {
+  Image_url = '../assets/Icons/users_icon.png'
   bookPrices: BookPrice[] = []
   displayedColumns: string[] = [
-    'partner',
     'clientName',
     'statementd',
     'policynumber',
@@ -73,7 +72,7 @@ export class DialogDataComponent implements AfterViewInit {
       this.bookPrices = data 
       this.dataSource.data = this.bookPrices 
       
-      const sortState: Sort = { active: 'partner', direction: 'asc' }
+      const sortState: Sort = { active: 'clientName', direction: 'asc' }
       this.sort.active = sortState.active
       this.sort.direction = sortState.direction
       this.sort.sortChange.emit(sortState)
@@ -87,6 +86,7 @@ export class DialogDataComponent implements AfterViewInit {
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase()
   }
+
 
 
 }
