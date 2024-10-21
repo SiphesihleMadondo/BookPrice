@@ -15,6 +15,8 @@ import { MatSortModule } from '@angular/material/sort'
 import { MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
+import { ExcelServiceService } from '../service/excel-service.service'
+
 
 
 @Component({
@@ -55,7 +57,8 @@ export class DialogDataComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator
 
 
-  constructor (protected bookPrice: SBookPriceService) {}
+
+  constructor (protected bookPrice: SBookPriceService, protected excelService: ExcelServiceService) {}
   
 
  
@@ -88,6 +91,9 @@ export class DialogDataComponent implements AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase()
   }
 
+  exportAsXLSX():void {
+    this.excelService.exportToExcel(this.dataSource.data, 'Clients');
+  }
 
 
 }

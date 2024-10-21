@@ -67,12 +67,19 @@
   height: 300px !important;
   width: auto!important;
   min-width: 10%;
-  margin-left: 5%;
+  margin-left: 3%;
   font-family: Poppins;
 }
 .mat-column-_user{
   width: 5% !important;
 }
+
+.excel_download_button{
+  position: absolute;
+  right: 13%; 
+  border-radius: 5px;
+}
+
 
 @media (max-width: 600px) {
   .clients-table {
