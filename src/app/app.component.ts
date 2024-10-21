@@ -1,12 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
-import {
-  MatDialog,
-  MatDialogConfig
-} from '@angular/material/dialog'
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
 import { DialogDataComponent } from './dialog-data/dialog-data.component'
 import { ScrollStrategyOptions } from '@angular/cdk/overlay'
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-root',
@@ -19,8 +16,7 @@ export class AppComponent implements OnInit {
   scrollStrategy: any
   constructor (
     public dialog: MatDialog,
-    private scrollStrategyOptions: ScrollStrategyOptions,
-
+    private scrollStrategyOptions: ScrollStrategyOptions
   ) {}
 
   ngOnInit (): void {
@@ -38,5 +34,4 @@ export class AppComponent implements OnInit {
       maxWidth: '1500px'
     })
   }
-
 }

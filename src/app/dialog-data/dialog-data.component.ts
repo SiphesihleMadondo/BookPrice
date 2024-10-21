@@ -11,13 +11,11 @@ import { BookPrice } from '../models/book-price'
 import { SBookPriceService } from '../service/s-book-price.service'
 import { CommonModule } from '@angular/common'
 import { MatSort, Sort } from '@angular/material/sort'
-import { MatSortModule } from '@angular/material/sort' 
+import { MatSortModule } from '@angular/material/sort'
 import { MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { ExcelServiceService } from '../service/excel-service.service'
-
-
 
 @Component({
   selector: 'app-dialog-data',
@@ -56,36 +54,30 @@ export class DialogDataComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort
   @ViewChild(MatPaginator) paginator!: MatPaginator
 
+  constructor (
+    protected bookPrice: SBookPriceService,
+    protected excelService: ExcelServiceService
+  ) {}
 
-
-  constructor (protected bookPrice: SBookPriceService, protected excelService: ExcelServiceService) {}
-  
-
- 
-  ngAfterViewInit(): void {
+  ngAfterViewInit (): void {
     this.returnClients()
     this.dataSource.sort = this.sort
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
-    
-  
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0))
   }
 
   returnClients () {
     this.bookPrice.getClients().subscribe((data: BookPrice[]) => {
+      this.bookPrices = data
+      this.dataSource.data = this.bookPrices
 
-      this.bookPrices = data 
-      this.dataSource.data = this.bookPrices 
-      
       const sortState: Sort = { active: 'clientName', direction: 'asc' }
       this.sort.active = sortState.active
       this.sort.direction = sortState.direction
       this.sort.sortChange.emit(sortState)
       this.dataSource.paginator = this.paginator
-      
-      console.log(this.bookPrices);
+
+      console.log(this.bookPrices)
     })
-   
-    
   }
 
   applyFilter (event: Event) {
@@ -93,22 +85,20 @@ export class DialogDataComponent implements AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase()
   }
 
-  exportAsXLSX():void {
-  
+  exportAsXLSX (): void {
     //mapped field or properties needs to be exact to the ones from the response
-    this.excelService.exportToExcel(this.bookPrices.map(x => ({
-      Partner: x.partner,
-      Client: x.clientName,
-      'Policy Number': x.policynumber,
-      'Product Provider': x.productProvider,
-      'Adjusted Revenue': x.adjustedRevenue,
-      'Adjusted Asset Value': x.adjustedAssetValue,
-      'Book Price': x.bookPrice1,
-      'Statement Date': x.statementDate
-    })), 'Clients');
-
-    
+    this.excelService.exportToExcel(
+      this.bookPrices.map(x => ({
+        Partner: x.partner,
+        Client: x.clientName,
+        'Policy Number': x.policynumber,
+        'Product Provider': x.productProvider,
+        'Adjusted Revenue': x.adjustedRevenue,
+        'Adjusted Asset Value': x.adjustedAssetValue,
+        'Book Price': x.bookPrice1,
+        'Statement Date': x.statementDate
+      })),
+      'Clients'
+    )
   }
-
-
 }
