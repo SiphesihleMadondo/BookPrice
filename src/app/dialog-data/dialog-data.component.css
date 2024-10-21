@@ -36,10 +36,11 @@
     border: 1px solid #ccc;
     border-radius: 44px;
     transition: border-color 0.3s, box-shadow 0.3s;
+    font-family: Poppins;
 }
 
 .input-group:hover {
-    border-color: #007bff;
+    border-color: blue;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
@@ -78,6 +79,7 @@
   position: absolute;
   right: 13%; 
   border-radius: 5px;
+  border-color: #808088;
 }
 
 
@@ -85,7 +87,6 @@
   .clients-table {
       padding: 8px;
       font-size: 12px;
-      background-color: #007bff;
   }
 
   .mat-mdc-header-cell{ 

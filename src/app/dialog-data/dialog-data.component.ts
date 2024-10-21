@@ -81,9 +81,11 @@ export class DialogDataComponent implements AfterViewInit {
       this.sort.direction = sortState.direction
       this.sort.sortChange.emit(sortState)
       this.dataSource.paginator = this.paginator
-    
+      
+      console.log(this.bookPrices);
     })
    
+    
   }
 
   applyFilter (event: Event) {
@@ -92,7 +94,20 @@ export class DialogDataComponent implements AfterViewInit {
   }
 
   exportAsXLSX():void {
-    this.excelService.exportToExcel(this.dataSource.data, 'Clients');
+  
+    //mapped field or properties needs to be exact to the ones from the response
+    this.excelService.exportToExcel(this.bookPrices.map(x => ({
+      Partner: x.partner,
+      Client: x.clientName,
+      'Policy Number': x.policynumber,
+      'Product Provider': x.productProvider,
+      'Adjusted Revenue': x.adjustedRevenue,
+      'Adjusted Asset Value': x.adjustedAssetValue,
+      'Book Price': x.bookPrice1,
+      'Statement Date': x.statementDate
+    })), 'Clients');
+
+    
   }
 
 

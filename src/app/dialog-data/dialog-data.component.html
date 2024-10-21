@@ -5,7 +5,7 @@
 </mat-dialog-actions>
 
 <mat-dialog-content style="width: max-content; overflow: hidden;">
-    <button class="excel_download_button" (click)="exportAsXLSX()"><i class="bi bi-filetype-xlsx" style="font-size:32px;color:blue; display:block;"></i></button>
+    <button text="" class="excel_download_button" (click)="exportAsXLSX()"><i class="bi bi-filetype-xlsx" style="font-size:32px;color:blue; display:block;border-color: #808088;"></i></button>
     <div class="input-group mb-3" style="width: 150px;">
         <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true" style="color: grey;"></i></span>
         <input (keyup)="applyFilter($event)" type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">

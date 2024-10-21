@@ -1,11 +1,14 @@
 export interface BookPrice {
 
     partner: string;
-    client: string;
-    policy_number: string;
-    product_provider: string;
-    adjusted_revenue: any;
-    adjusted_asset_value: any 
-    book_price: any;
-    statement_date: any;
+    clientName: string;
+    policynumber: string;
+    productProvider: string;
+    adjustedRevenue: any;
+    adjustedAssetValue: any 
+    bookPrice1: any;
+    statementDate: any;
+
+
+   // Properties needs to be exact to the ones from the response
 }
