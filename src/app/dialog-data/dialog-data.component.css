@@ -2,12 +2,20 @@
   .mat-elevation-z8{
     position: relative;
     top: 40px;
-    margin-left: 2%;
+   
     box-shadow: none; /*disable box shadow */
     overflow: auto;
-    width: 1400px;
-    height: 500px !important;
+    height: 400px !important;
+    width: max-content;
    
+  }
+
+  .mat-mdc-dialog-content {
+    position: relative;
+    top: -8%;
+    /* margin-left: 4%; */
+   /*  width: max-content !important; */
+
   }
 
   .mat-mdc-header-cell{
@@ -29,13 +37,14 @@
   }
 
   .input-group {
-    position: absolute;
-    right: 2%; 
+    position: relative;
+    top: 0%;
+    left: 87.5%; 
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
+    border: solid #ccc;
     border-radius: 44px;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    /* transition: border-color 0.3s, box-shadow 0.3s; */
     font-family: Poppins;
 }
 
@@ -64,32 +73,38 @@
   border: none;
 }
 
-.clients-table{
-  height: 300px !important;
-  width: auto!important;
+.mat-mdc-table{
+  width: 1225px !important; 
   min-width: 10%;
-  margin-left: 3%;
   font-family: Poppins;
 }
 .mat-column-_user{
   width: 5% !important;
-}
+} 
 
 .excel_download_button{
-  position: absolute;
-  right: 13%; 
+  position: relative;
+  top: 1%;
+  left: 81%; 
   border-radius: 5px;
+  width: max-content;
+  height: fit-content;
   border-color: #808088;
 }
-
 
 @media (max-width: 600px) {
   .clients-table {
       padding: 8px;
       font-size: 12px;
+     
   }
 
   .mat-mdc-header-cell{ 
     width: 70px !important;
   }
+
+  .mat-elevation-z8, .mat-mdc-dialog-content{
+    overflow-y: auto;
+  }
 }
+

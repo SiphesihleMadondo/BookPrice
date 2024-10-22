@@ -30,8 +30,9 @@ export class AppComponent implements OnInit {
 
     this.dialog.open(DialogDataComponent, {
       height: '700px',
-      width: '100%',
-      maxWidth: '1500px'
+      width: '90%',
+      maxWidth: '1298px',
+      //maxHeight: '850px'
     })
   }
 }
