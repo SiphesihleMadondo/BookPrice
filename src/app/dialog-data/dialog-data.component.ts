@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core'
+import { AfterViewInit, Component, OnInit } from '@angular/core'
 import {
   MatDialogContent,
   MatDialogModule,
@@ -16,6 +16,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { ExcelServiceService } from '../service/excel-service.service'
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dialog-data',
@@ -31,14 +32,17 @@ import { ExcelServiceService } from '../service/excel-service.service'
     MatLabel,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
+    
   ],
   templateUrl: './dialog-data.component.html',
   styleUrl: './dialog-data.component.css'
 })
-export class DialogDataComponent implements AfterViewInit {
+export class DialogDataComponent implements AfterViewInit,  OnInit{
   Image_url = '../assets/Icons/users_icon.png'
   bookPrices: BookPrice[] = []
+  filterValue: string = '';
   displayedColumns: string[] = [
     '_user',
     'clientName',
@@ -59,10 +63,19 @@ export class DialogDataComponent implements AfterViewInit {
     protected excelService: ExcelServiceService
   ) {}
 
+  ngOnInit(): void {
+    const searchBox = document.getElementById('searchbox') as HTMLInputElement;
+    searchBox.addEventListener('search', () => {
+      searchBox.value = '';
+      this.dataSource.filter = ''; // Reset the filter
+    });
+  }
+
   ngAfterViewInit (): void {
     this.returnClients()
     this.dataSource.sort = this.sort
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0))
+    
   }
 
   returnClients () {
@@ -81,10 +94,13 @@ export class DialogDataComponent implements AfterViewInit {
   }
 
   applyFilter (event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value
-    this.dataSource.filter = filterValue.trim().toLowerCase()
 
+    const filterValue = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+      
   }
+
+
 
   exportAsXLSX (): void {
     //mapped field or properties needs to be exact to the ones from the response
