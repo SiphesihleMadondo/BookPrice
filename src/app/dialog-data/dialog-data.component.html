@@ -1,23 +1,21 @@
 
 <h7 mat-dialog-title style="font-family: Poppins;">Clients &nbsp; <img width="50" height="50" src="https://img.icons8.com/stickers/50/group.png" alt="group"/></h7>
+<mat-dialog-content style="overflow: hidden; ">
 
-<mat-dialog-actions style="margin-top: -5px; position: absolute; right: -0%;">
+    
+<mat-dialog-actions style="margin-top: -25px; position: absolute; right: -1%;">
     <button mat-flat-button mat-dialog-close style="border: none;"><span class="close">x</span></button>
    
 </mat-dialog-actions>
 
-<button text="" class="excel_download_button" (click)="exportAsXLSX()"><i class="bi bi-filetype-xlsx" style="font-size:32px;color:blue; display:block;border-color: #808088;"></i></button>
+    <button type="submit" aria-label="export" text="" class="excel_download_button" (click)="exportAsXLSX()"><i class="bi bi-filetype-xlsx" style="font-size:32px;color:blue; display:block;border-color: #808088;"></i></button>
 
-<mat-dialog-content style="overflow: hidden; ">
-    
+
     
     <div class="input-group mb-3" style="width: 150px;">
         <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true" style="color: grey;"></i></span>
         <input (keyup)="applyFilter($event)"  class="form-control" type="search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" id="searchbox">
-       <!--  <button mat-icon-button matSuffix *ngIf="filterValue" (click)="clearFilter()">
-            <mat-icon>close</mat-icon>
-       </button> -->
-      </div>
+    </div>
       
 
     <div class="mat-elevation-z8">

@@ -88,8 +88,6 @@ export class DialogDataComponent implements AfterViewInit,  OnInit{
       this.sort.direction = sortState.direction
       this.sort.sortChange.emit(sortState)
       this.dataSource.paginator = this.paginator
-
-      console.log(this.bookPrices)
     })
   }
 

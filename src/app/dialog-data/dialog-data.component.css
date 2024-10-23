@@ -8,6 +8,7 @@
     height: 400px !important;
     width: max-content;
    
+   
   }
 
   .mat-mdc-dialog-content {
@@ -38,8 +39,8 @@
 
   .input-group {
     position: relative;
-    top: 0%;
-    left: 87.5%; 
+    top: 5%;
+    left: 1095px;  
     display: flex;
     align-items: center;
     border: solid #ccc;
@@ -74,22 +75,25 @@
 }
 
 .mat-mdc-table{
-  width: 1225px !important; 
+  /* width: 1225px !important;  */
+  width: 97%;
   min-width: 10%;
   font-family: Poppins;
-}
+} 
 .mat-column-_user{
   width: 5% !important;
 } 
 
 .excel_download_button{
   position: relative;
-  top: 1%;
-  left: 81%; 
+  top: 12%;
+  /* left: 81%;  */
+  left: 1030px; 
   border-radius: 5px;
   width: max-content;
-  height: fit-content;
+  height: 40px;;
   border-color: #808088;
+ 
 }
 
 @media (max-width: 600px) {
@@ -103,8 +107,17 @@
     width: 70px !important;
   }
 
-  .mat-elevation-z8, .mat-mdc-dialog-content{
-    overflow-y: auto;
+  .mat-mdc-table{
+    padding: 8px;
+    font-size: 12px;
+    position: relative;
+    top: 40px;
+   
+    box-shadow: none; /*disable box shadow */
+    overflow: auto;
+    height: auto !important;
+    width: 100px;
+   
   }
 }
 
