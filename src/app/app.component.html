@@ -1,5 +1,21 @@
-<div class="book_container col-6 col-sm-4">
-  Book Price
+<div class="book_container col-6 col-sm-4" style="height: 50%;" >
+
+  
+  <div>Book Price</div>
+  <br/>
+
+  <div>
+
+    <select [(ngModel)]="selectedValue" title="Select">
+      <option *ngFor="let item of partners" [value]="item.partnerName" >{{ item.partnerName }}</option>
+    </select>
+  </div>
+ 
+
+  <br/>
+  <div>  <p>Selected Value: {{ selectedValue }}</p></div>
+
+  <button (click)="sendData(selectedValue)">Send Data</button> <!--Tomorrow check how to pass the value using dropdown.-->
 
   <button (click)="openDailog()" type="button" class="btn btn-outline-primary">View Clients</button>
 </div>

@@ -17,6 +17,8 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { ExcelServiceService } from '../service/excel-service.service'
 import { MatIconModule } from '@angular/material/icon';
+import { Partner } from '../models/partner'
+import { SharedService } from '../service/shared.service'
 
 @Component({
   selector: 'app-dialog-data',
@@ -41,18 +43,21 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class DialogDataComponent implements AfterViewInit,  OnInit{
   Image_url = '../assets/Icons/users_icon.png'
+  partners: Partner [] = []
   bookPrices: BookPrice[] = []
+  partnerNames: string [] = []
   filterValue: string = '';
   displayedColumns: string[] = [
     '_user',
     'clientName',
-    'statementd',
-    'policynumber',
+    //'statementd',
+    //'policynumber',
     'productProvider',
     'adjustedRevenue',
     'adjustedAssetValue',
     'bookPrice1'
   ]
+  data: string | undefined;
   dataSource = new MatTableDataSource(this.bookPrices)
 
   @ViewChild(MatSort) sort!: MatSort
@@ -60,7 +65,8 @@ export class DialogDataComponent implements AfterViewInit,  OnInit{
 
   constructor (
     protected bookPrice: SBookPriceService,
-    protected excelService: ExcelServiceService
+    protected excelService: ExcelServiceService,
+    protected dataService: SharedService
   ) {}
 
   ngOnInit(): void {
@@ -69,16 +75,20 @@ export class DialogDataComponent implements AfterViewInit,  OnInit{
       searchBox.value = '';
       this.dataSource.filter = ''; // Reset the filter
     });
+
+    this.dataService.currentData.subscribe(data => this.data = data);
   }
 
   ngAfterViewInit (): void {
-    this.returnClients()
+    this.AllClients()
+   /*  this.ClientPerPartner()
+    this.Partners() */
     this.dataSource.sort = this.sort
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0))
     
   }
 
-  returnClients () {
+  AllClients () {
     this.bookPrice.getClients().subscribe((data: BookPrice[]) => {
       this.bookPrices = data
       this.dataSource.data = this.bookPrices
@@ -90,6 +100,24 @@ export class DialogDataComponent implements AfterViewInit,  OnInit{
       this.dataSource.paginator = this.paginator
     })
   }
+/* 
+  ClientPerPartner(){
+        this.bookPrice.ClientsPerPartner("Ian Theron").subscribe(partner => {
+          console.log(partner)
+        })
+  }
+
+  Partners(){
+    this.bookPrice.Partners().subscribe((partners: Partner[]) => {
+
+      partners.forEach(element => {
+        this.partnerNames.push(element.partnerName)
+      });
+      
+     console.log(this.partnerNames);
+      
+    })
+  } */
 
   applyFilter (event: Event) {
 

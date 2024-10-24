@@ -1,123 +1,115 @@
+.mat-elevation-z8 {
+  position: relative;
+  top: 40px;
 
-  .mat-elevation-z8{
-    position: relative;
-    top: 40px;
-   
-    box-shadow: none; /*disable box shadow */
-    overflow: auto;
-    height: 400px !important;
-    width: max-content;
-   
-   
-  }
+  box-shadow: none; /*disable box shadow */
+  overflow: auto;
+  height: 400px !important;
+ /*  width: max-content; */
 
-  .mat-mdc-dialog-content {
-    position: relative;
-    top: -8%;
-    /* margin-left: 4%; */
-   /*  width: max-content !important; */
+}
 
-  }
+.mat-mdc-dialog-content {
+  position: relative;
+  top: -8%;
+}
 
-  .mat-mdc-header-cell{
-    font-size: small !important;
-    font-weight: bold !important ;
-    width: 175px !important;
-  }
+.mat-mdc-header-cell {
+  font-size: small !important;
+  font-weight: bold !important ;
+  /* width: 175px !important; */
+  background-color: #89ba40 !important;
+  color: #050038;
+}
 
-  .close {
-    cursor: pointer;
-   
-    padding: 12px 16px;
-    font-size: larger;
-    font-family: Poppins;
-  }
+.close {
+  cursor: pointer;
 
-  .mat-mdc-cell{
-    height: 10% !important;
-  }
+  padding: 12px 16px;
+  font-size: larger;
+  font-family: Poppins;
+}
 
-  .input-group {
-    position: relative;
-    top: 5%;
-    left: 1095px;  
-    display: flex;
-    align-items: center;
-    border: solid #ccc;
-    border-radius: 44px;
-    /* transition: border-color 0.3s, box-shadow 0.3s; */
-    font-family: Poppins;
+.mat-mdc-cell {
+  height: 10% !important;
+}
+
+.input-group {
+  position: relative;
+  top: 5%;
+  left: 1095px;
+  display: flex;
+  align-items: center;
+  border: solid #ccc;
+  border-radius: 44px;
+  /* transition: border-color 0.3s, box-shadow 0.3s; */
+  font-family: Poppins;
 }
 
 .input-group:hover {
-    border-color: blue;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #03714f;
+  box-shadow: rgb(137, 186, 64);
 }
 
 .form-control {
-    border: none;
-    box-shadow: none;
-    border-radius: 44px;
+  border: none;
+  box-shadow: none;
+  border-radius: 44px;
 }
 
 .form-control:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .input-group-append .btn {
-    border: none;
-    box-shadow: none;
+  border: none;
+  box-shadow: none;
 }
 
-.input-group-text{
+.input-group-text {
   border-radius: 44px;
   border: none;
 }
 
-.mat-mdc-table{
+.mat-mdc-table {
   /* width: 1225px !important;  */
   width: 97%;
   min-width: 10%;
   font-family: Poppins;
-} 
-.mat-column-_user{
+}
+.mat-column-_user {
   width: 5% !important;
-} 
+}
 
-.excel_download_button{
+.excel_download_button {
   position: relative;
   top: 12%;
   /* left: 81%;  */
-  left: 1030px; 
+  left: 1030px;
   border-radius: 5px;
   width: max-content;
-  height: 40px;;
-  border-color: #808088;
- 
+  height: 40px;
+  border-color: #037b55;
 }
 
 @media (max-width: 600px) {
-  .clients-table {
-      padding: 8px;
-      font-size: 12px;
-     
-  }
-
-  .mat-mdc-header-cell{ 
+  .mat-mdc-header-cell {
     width: 70px !important;
   }
 
-  .mat-mdc-table{
+  .mat-mdc-table {
     padding: 8px;
     font-size: 12px;
     position: relative;
     top: 40px;
-   
+
     box-shadow: none; /*disable box shadow */
     overflow: auto;
     height: auto !important;
-    width: 100px;
-   
+    width: auto !important;
+  }
+
+  .mat-mdc-dialog-content {
+    overflow: scroll;
   }
 }
-
