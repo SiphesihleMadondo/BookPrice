@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   partners: Partner[] = []
   bookPrices: BookPrice[] = []
   partnerNames: string[] = []
+   selectedItem: string = ''
 
   constructor (
     public dialog: MatDialog,
@@ -38,13 +39,7 @@ export class AppComponent implements OnInit {
   }
 
   sendData(selected: string) {
-    this.dataService.changeData('Hello from Component 1!' + selected);
-  }
-
-  ClientPerPartner () {
-    this.bookPrice.ClientsPerPartner('Ian Theron').subscribe(partner => {
-      console.log(partner)
-    })
+    this.dataService.changeData(selected);
   }
 
   Partners () {
@@ -53,6 +48,12 @@ export class AppComponent implements OnInit {
 
       //console.log(this.partners)
     })
+  }
+
+  onChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    this.selectedItem = selectElement.value;
+    console.log(this.selectedItem)
   }
 
   openDailog () {

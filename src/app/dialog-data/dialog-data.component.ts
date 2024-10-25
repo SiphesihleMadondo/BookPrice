@@ -16,7 +16,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { ExcelServiceService } from '../service/excel-service.service'
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon'
 import { Partner } from '../models/partner'
 import { SharedService } from '../service/shared.service'
 
@@ -36,17 +36,16 @@ import { SharedService } from '../service/shared.service'
     MatInputModule,
     MatDialogModule,
     MatIconModule
-    
   ],
   templateUrl: './dialog-data.component.html',
   styleUrl: './dialog-data.component.css'
 })
-export class DialogDataComponent implements AfterViewInit,  OnInit{
+export class DialogDataComponent implements AfterViewInit, OnInit {
   Image_url = '../assets/Icons/users_icon.png'
-  partners: Partner [] = []
+  partners: Partner[] = []
   bookPrices: BookPrice[] = []
-  partnerNames: string [] = []
-  filterValue: string = '';
+  partnerNames: string[] = []
+  filterValue: string = ''
   displayedColumns: string[] = [
     '_user',
     'clientName',
@@ -57,7 +56,7 @@ export class DialogDataComponent implements AfterViewInit,  OnInit{
     'adjustedAssetValue',
     'bookPrice1'
   ]
-  data: string | undefined;
+  partner_selected!: string 
   dataSource = new MatTableDataSource(this.bookPrices)
 
   @ViewChild(MatSort) sort!: MatSort
@@ -69,23 +68,24 @@ export class DialogDataComponent implements AfterViewInit,  OnInit{
     protected dataService: SharedService
   ) {}
 
-  ngOnInit(): void {
-    const searchBox = document.getElementById('searchbox') as HTMLInputElement;
+  ngOnInit (): void {
+    const searchBox = document.getElementById('searchbox') as HTMLInputElement
     searchBox.addEventListener('search', () => {
-      searchBox.value = '';
-      this.dataSource.filter = ''; // Reset the filter
-    });
+      searchBox.value = ''
+      this.dataSource.filter = '' // Reset the filter
+    })
 
-    this.dataService.currentData.subscribe(data => this.data = data);
+    this.dataService.currentData.subscribe(
+      data => (this.partner_selected = data)
+    )
   }
 
   ngAfterViewInit (): void {
-    this.AllClients()
-   /*  this.ClientPerPartner()
-    this.Partners() */
+    //this.AllClients()
+    this.ClientPerPartner()
+    /*this.Partners() */
     this.dataSource.sort = this.sort
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0))
-    
   }
 
   AllClients () {
@@ -100,33 +100,25 @@ export class DialogDataComponent implements AfterViewInit,  OnInit{
       this.dataSource.paginator = this.paginator
     })
   }
-/* 
-  ClientPerPartner(){
-        this.bookPrice.ClientsPerPartner("Ian Theron").subscribe(partner => {
-          console.log(partner)
-        })
-  }
 
-  Partners(){
-    this.bookPrice.Partners().subscribe((partners: Partner[]) => {
+  ClientPerPartner () {
+    this.bookPrice.ClientsPerPartner(this.partner_selected).subscribe(partner => {
+      this.bookPrices = partner
+      this.dataSource.data = this.bookPrices
 
-      partners.forEach(element => {
-        this.partnerNames.push(element.partnerName)
-      });
-      
-     console.log(this.partnerNames);
-      
+      const sortState: Sort = { active: 'clientName', direction: 'asc' }
+      this.sort.active = sortState.active
+      this.sort.direction = sortState.direction
+      this.sort.sortChange.emit(sortState)
+      this.dataSource.paginator = this.paginator
+      console.log(this.partner_selected)
     })
-  } */
+  }
 
   applyFilter (event: Event) {
-
     const filterValue = (event.target as HTMLInputElement).value
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-      
+    this.dataSource.filter = filterValue.trim().toLowerCase()
   }
-
-
 
   exportAsXLSX (): void {
     //mapped field or properties needs to be exact to the ones from the response
