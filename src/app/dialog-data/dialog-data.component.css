@@ -5,7 +5,6 @@
   box-shadow: none; /*disable box shadow */
   overflow: auto;
   height: 400px !important;
- /*  width: max-content; */
 
 }
 
@@ -15,11 +14,10 @@
 }
 
 .mat-mdc-header-cell {
-  font-size: small !important;
-  font-weight: bold !important ;
-  /* width: 175px !important; */
-  background-color: #89ba40 !important;
-  color: #050038;
+  /* font-size: small !important; */
+  background-color: #04855a !important;
+  color: white;
+  font-family: Poppins;
 }
 
 .close {
@@ -42,12 +40,11 @@
   align-items: center;
   border: solid #ccc;
   border-radius: 44px;
-  /* transition: border-color 0.3s, box-shadow 0.3s; */
   font-family: Poppins;
 }
 
 .input-group:hover {
-  border-color: #03714f;
+  border-color: #04855a ;
   box-shadow: rgb(137, 186, 64);
 }
 
@@ -72,7 +69,6 @@
 }
 
 .mat-mdc-table {
-  /* width: 1225px !important;  */
   width: 97%;
   min-width: 10%;
   font-family: Poppins;
@@ -84,7 +80,6 @@
 .excel_download_button {
   position: relative;
   top: 70px;
-  /* left: 81%;  */
   left: 1030px;
   border-radius: 5px;
   width: max-content;
