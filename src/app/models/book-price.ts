@@ -6,7 +6,7 @@ export interface BookPrice {
   adjustedRevenue: any
   adjustedAssetValue: any
   bookPrice1: any
-  statementDate: any
+  statementDate: Date
 
   // Properties needs to be exact to the ones from the response
 }

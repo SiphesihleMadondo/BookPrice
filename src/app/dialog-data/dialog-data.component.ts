@@ -49,8 +49,7 @@ export class DialogDataComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     '_user',
     'clientName',
-    //'statementd',
-    //'policynumber',
+    'statementdate',
     'productProvider',
     'adjustedRevenue',
     'adjustedAssetValue',
@@ -60,7 +59,6 @@ export class DialogDataComponent implements AfterViewInit, OnInit {
   dataSource = new MatTableDataSource(this.bookPrices)
 
   @ViewChild(MatSort) sort!: MatSort
-  @ViewChild(MatPaginator) paginator!: MatPaginator
 
   constructor (
     protected bookPrice: SBookPriceService,
@@ -85,19 +83,12 @@ export class DialogDataComponent implements AfterViewInit, OnInit {
     this.ClientPerPartner()
     /*this.Partners() */
     this.dataSource.sort = this.sort
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0))
   }
 
   AllClients () {
     this.bookPrice.getClients().subscribe((data: BookPrice[]) => {
       this.bookPrices = data
-      this.dataSource.data = this.bookPrices
-
-      const sortState: Sort = { active: 'clientName', direction: 'asc' }
-      this.sort.active = sortState.active
-      this.sort.direction = sortState.direction
-      this.sort.sortChange.emit(sortState)
-      this.dataSource.paginator = this.paginator
+      this.dataSource.data = this.bookPrices 
     })
   }
 
@@ -110,7 +101,6 @@ export class DialogDataComponent implements AfterViewInit, OnInit {
       this.sort.active = sortState.active
       this.sort.direction = sortState.direction
       this.sort.sortChange.emit(sortState)
-      this.dataSource.paginator = this.paginator
       console.log(this.partner_selected)
     })
   }

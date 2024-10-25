@@ -65,7 +65,7 @@ export class AppComponent implements OnInit {
       height: '700px',
       width: '100%',
       maxWidth: '1298px',
-      panelClass: 'custom'
+      panelClass: 'no-border-radius'
       //maxHeight: '850px'
     })
   }
