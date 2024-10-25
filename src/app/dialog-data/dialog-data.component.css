@@ -71,6 +71,7 @@
 .mat-mdc-table {
   width: 99%;
   min-width: 10%;
+  height: max-content;
   font-family: Poppins;
 }
 .mat-column-_user {
