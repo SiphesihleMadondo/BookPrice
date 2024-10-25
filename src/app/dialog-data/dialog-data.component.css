@@ -36,7 +36,7 @@
 
 .input-group {
   position: relative;
-  top: 5%;
+  top: 27px;
   left: 1095px;
   display: flex;
   align-items: center;
@@ -83,7 +83,7 @@
 
 .excel_download_button {
   position: relative;
-  top: 12%;
+  top: 70px;
   /* left: 81%;  */
   left: 1030px;
   border-radius: 5px;
