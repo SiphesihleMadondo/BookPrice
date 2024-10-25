@@ -6,14 +6,15 @@
 
   <div>
 
-    <select [(ngModel)]="selectedValue" title="Select" (change)="onChange($event)">
+    <select [(ngModel)]="selectedValue" placeholder="Partner" (change)="onChange($event)" style="border-radius: 25px;">
+      <option value="" disabled selected>Partner</option>
       <option *ngFor="let item of partners" [value]="item.partnerName" >{{ item.partnerName }}</option>
     </select>
   </div>
  
 
   <br/>
-  <div>  <p>Selected Value: {{ selectedValue }}</p></div>
+  <div>  <p>Selected Partner: {{ selectedValue }}</p></div>
 
   <button (click)="openDailog()" (click)="sendData(selectedValue)" type="button" class="btn btn-outline-primary">View Clients</button>
 
